@@ -3,7 +3,7 @@ using System.Collections;
 using Lab12.ClassLibrary;
 using Lab12.ClassLibrary.Utils;
 
-class HTableElement<KType, DType>
+public class HTableElement<KType, DType>
 {
     public HTableElement<KType, DType> next;
     private KType key;
@@ -52,7 +52,7 @@ class HTableElement<KType, DType>
     }
 }
 
-class HashTable<KType, DType> : IDictionary<KType, DType>, ICloneable
+public class HashTable<KType, DType> : IDictionary<KType, DType>, ICloneable
 {
     private List<HTableElement<KType, DType>> table;
     private List<KType> keys;
@@ -118,14 +118,6 @@ class HashTable<KType, DType> : IDictionary<KType, DType>, ICloneable
     }
 
     public void Add(KType key, DType value) => Add(new HTableElement<KType, DType>(key, value));
-
-    public void Add(params HTableElement<KType, DType>[] elements)
-    {
-        foreach (var element in elements)
-        {
-            Add(element);
-        }
-    }
 
     public bool Remove(KType key)
     {
